@@ -153,7 +153,7 @@ if __name__ == '__main__':
     parser.add_argument('--auxiliary', default='LL4AL', type=str, help='auxiliary training loss', choices=['NONE', 'LL4AL'])
     args = parser.parse_args()
 
-    config = importlib.import_module('config.'+args.config
+    config = importlib.import_module('config.'+args.config)
     config.SAMPLING = args.sampling # Random | LL4AL 
     config.AUXILIARY = args.auxiliary # NONE | LL4AL 
     to_import = [name for name in dir(config) if not name.startswith('_')]
