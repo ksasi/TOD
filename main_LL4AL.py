@@ -153,7 +153,7 @@ if __name__ == '__main__':
     parser.add_argument('--auxiliary', default='LL4AL', type=str, help='auxiliary training loss', choices=['NONE', 'LL4AL'])
     args = parser.parse_args()
 
-    config = importlib.import_module('config.'+args.config)
+    config = importlib.import_module('config.'+args.config
     config.SAMPLING = args.sampling # Random | LL4AL 
     config.AUXILIARY = args.auxiliary # NONE | LL4AL 
     to_import = [name for name in dir(config) if not name.startswith('_')]
@@ -172,9 +172,9 @@ if __name__ == '__main__':
             T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
         ])
 
-        data_train = CIFAR10(DATA_DIR, train=True, download=False, transform=train_transform)
-        data_unlabeled = CIFAR10(DATA_DIR, train=True, download=False, transform=test_transform)
-        data_test = CIFAR10(DATA_DIR, train=False, download=False, transform=test_transform)
+        data_train = CIFAR10(DATA_DIR, train=True, download=True, transform=train_transform)
+        data_unlabeled = CIFAR10(DATA_DIR, train=True, download=True, transform=test_transform)
+        data_test = CIFAR10(DATA_DIR, train=False, download=True, transform=test_transform)
         
     elif DATASET == 'cifar100':
         train_transform = T.Compose([
@@ -188,9 +188,9 @@ if __name__ == '__main__':
             T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
         ])
 
-        data_train = CIFAR100(DATA_DIR, train=True, download=False, transform=train_transform)
-        data_unlabeled = CIFAR100(DATA_DIR, train=True, download=False, transform=test_transform)
-        data_test = CIFAR100(DATA_DIR, train=False, download=False, transform=test_transform)
+        data_train = CIFAR100(DATA_DIR, train=True, download=True, transform=train_transform)
+        data_unlabeled = CIFAR100(DATA_DIR, train=True, download=True, transform=test_transform)
+        data_test = CIFAR100(DATA_DIR, train=False, download=True, transform=test_transform)
         
     elif DATASET == 'svhn':
         train_transform = T.Compose([
@@ -204,9 +204,9 @@ if __name__ == '__main__':
             T.Normalize([0.4310, 0.4302, 0.4463], [0.1965, 0.1984, 0.1992])
         ])
 
-        data_train = SVHN(root=DATA_DIR, split='train', transform=train_transform, download=False)
-        data_unlabeled = SVHN(root=DATA_DIR, split='train', transform=train_transform, download=False)
-        data_test = SVHN(root=DATA_DIR, split='test', transform=test_transform, download=False)
+        data_train = SVHN(root=DATA_DIR, split='train', transform=train_transform, download=True)
+        data_unlabeled = SVHN(root=DATA_DIR, split='train', transform=train_transform, download=True)
+        data_test = SVHN(root=DATA_DIR, split='test', transform=test_transform, download=True)
         
     elif DATASET == 'caltech101':
         train_transform = T.Compose(
