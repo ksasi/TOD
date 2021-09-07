@@ -165,13 +165,13 @@ if __name__ == '__main__':
             T.RandomHorizontalFlip(),
             T.RandomCrop(size=32, padding=4),
             T.ToTensor(),
-            #T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
-            T.Normalize([0.4914, 0.4822, 0.4465], [0.2470, 0.2435, 0.2616])
+            T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
+            #T.Normalize([0.4914, 0.4822, 0.4465], [0.2470, 0.2435, 0.2616])
         ])
         test_transform = T.Compose([
             T.ToTensor(),
-            #T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
-            T.Normalize([0.4914, 0.4822, 0.4465], [0.2470, 0.2435, 0.2616])
+            T.Normalize([0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010])
+            #T.Normalize([0.4914, 0.4822, 0.4465], [0.2470, 0.2435, 0.2616])
         ])
 
         data_train = CIFAR10(DATA_DIR, train=True, download=True, transform=train_transform)
