@@ -11,7 +11,7 @@ ADDENDUM  = 1000
 
 # Active learning setting
 TRIALS = 3
-CYCLES = 7
+CYCLES = 10
 
 # Training setting
 MARGIN = 1.0  
